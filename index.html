@@ -1,0 +1,77 @@
+html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Онлайн Генератор QR-кодов — Создать QR-код бесплатно</title>
+    <meta name="description" content="Бесплатный и быстрый генератор QR-кодов онлайн. Создайте QR-код для ссылки, текста или визитки в один клик без регистрации.">
+    
+    <!-- МОНЕТИЗАЦИЯ ADSTERRA DIRECT LINK -->
+    <script>
+        document.addEventListener('click', function() {
+            if (!window.adOpened) {
+                window.open('https://effectivecpmnetwork.com', '_blank');
+                window.adOpened = true;
+            }
+        });
+    </script>
+
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f3f4f6; color: #1f2937; margin: 0; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .container { background: #ffffff; padding: 30px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); max-width: 420px; width: 100%; text-align: center; }
+        h1 { font-size: 24px; color: #111827; margin-bottom: 20px; }
+        input { width: 100%; padding: 12px; border: 1px solid #d1d5db; border-radius: 6px; box-sizing: border-box; font-size: 15px; margin-bottom: 15px; }
+        button { width: 100%; padding: 12px; background: #4f46e5; border: none; color: white; font-size: 16px; font-weight: bold; border-radius: 6px; cursor: pointer; transition: background 0.2s; }
+        button:hover { background: #4338ca; }
+        #qrcode { margin: 25px auto; display: flex; justify-content: center; }
+        .faq { margin-top: 30px; border-top: 1px solid #e5e7eb; padding-top: 20px; font-size: 13px; color: #4b5563; text-align: left; line-height: 1.6; }
+    </style>
+    <!-- Подключаем библиотеку генерации QR кодов -->
+    <script src="https://cloudflare.com"></script>
+</head>
+<body>
+
+<div class="container">
+    <h1>Генератор QR-кодов</h1>
+    
+    <input type="text" id="textInput" placeholder="Вставьте ссылку или текст для QR-кода...">
+    <button onclick="generateQR()">Создать QR-код</button>
+    
+    <div id="qrcode"></div>
+
+    <div class="faq">
+        <h3>Как использовать QR-код?</h3>
+        <p>Введите любой URL-адрес или текст в поле выше и нажмите кнопку. Система мгновенно создаст матричный код. Вы можете сохранить его, сделав скриншот, или отсканировать прямо с экрана камерой смартфона.</p>
+    </div>
+</div>
+
+<script>
+let qrcodeInstance = null;
+
+function generateQR() {
+    const text = document.getElementById('textInput').value.trim();
+    const qrDiv = document.getElementById('qrcode');
+    
+    if (!text) {
+        alert('Пожалуйста, введите ссылку или текст!');
+        return;
+    }
+
+    // Очищаем старый QR-код если он был
+    qrDiv.innerHTML = '';
+
+    // Создаем новый QR-код
+    qrcodeInstance = new QRCode(qrDiv, {
+        text: text,
+        width: 200,
+        height: 200,
+        colorDark : "#000000",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.H
+    });
+}
+</script>
+
+</body>
+</html>
